@@ -1,0 +1,70 @@
+{
+  "name": "pgscomandero",
+  "version": "0.4.4",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve ",
+    "build": "vue-cli-service build ",
+    "lint": "vue-cli-service lint",
+    "deploy-upload": "run-func aws.s3deploy.js init",
+    "deployS3": "aws s3 sync dist/ s3://comandero.pargolfsolutions.com --delete",
+    "invalidate": "run-func aws.s3deploy.js invalidateCache",
+    "invalidate-cache:live": "aws configure set preview.cloudfront true && aws cloudfront create-invalidation --distribution-id E1C1M3HKF7OXZM --paths '/*'"
+  },
+  "dependencies": {
+    "@sentry/vue": "^7.46.0",
+    "aws-sdk": "^2.1032.0",
+    "axios": "^1.3.3",
+    "core-js": "^3.6.4",
+    "cron-parser": "^4.9.0",
+    "firebase": "^9.17.1",
+    "fuse.js": "^7.0.0",
+    "html5-qrcode": "^2.3.4",
+    "jwt-decode": "^3.1.2",
+    "jwt-encode": "^1.0.1",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4",
+    "my-ip": "^1.1.1",
+    "register-service-worker": "^1.7.2",
+    "run-func": "^1.0.5",
+    "vue": "^2.6.11",
+    "vue-izitoast": "^1.2.1",
+    "vue-qrcode-reader": "^3.1.3",
+    "vue-router": "^3.6.5",
+    "vue-sweetalert2": "^5.0.5",
+    "vuetify": "^2.6.12",
+    "vuex": "^3.1.3"
+  },
+  "devDependencies": {
+    "@mdi/font": "^7.0.96",
+    "@vue/cli-plugin-babel": "~4.2.2",
+    "@vue/cli-plugin-eslint": "~4.2.2",
+    "@vue/cli-plugin-pwa": "^4.2.3",
+    "@vue/cli-service": "~4.2.2",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.1.2",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {
+      "no-unused-vars": "off",
+      "vue/no-multiple-template-root": "off"
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}
